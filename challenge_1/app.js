@@ -15,11 +15,33 @@
 
 
 // Helper Functions:
-// * lisen4Click
-// * placePeiceOnBoard
-// * searchWinner
+// * lisen4Click -  in html
+// * placePeiceOnBoard - in js
+// * clearBoard - in js
+// * search4Winner
 // * declareWinner
-// * clearBoard
 
 
+// How to track board pieces?
+	// create an board var
+		// an object or array = which is easier? 
+// (X || undefined) ? O : X
 
+
+function playcePeiceOnBoard(elemt){
+	
+}
+
+
+function clearBoard(){
+	
+}
+
+
+function search4Winner(board){
+	
+}
+
+function declareWinner(){
+	// may not need this func
+}
