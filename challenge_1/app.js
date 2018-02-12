@@ -20,6 +20,7 @@
 // * clearBoard - in js
 // * search4Winner
 // * declareWinner
+// * switchPlayers - in js
 
 
 // How to track board pieces?
@@ -27,6 +28,13 @@
 		// an object or array = which is easier? 
 // (X || undefined) ? O : X
 
+// create a current player
+var currentPlayer = 'X';
+
+
+function switchPlayer(){
+	(currentPlayer === 'X') ? (currentPlayer = 'O') : (currentPlayer = 'X')
+}
 
 function placePeiceOnBoard(element){
 	// I: element Id
@@ -35,12 +43,19 @@ function placePeiceOnBoard(element){
 	// Code: 
 		// first check if there is an element inerHtml value 
 			//retreave value and set to currentPieces
-			// if curentPice is not equal to ""
-			// pop up warning that says invalid move
-			// else 
-				// add current player piece to inner html
-				// add current player piece to boardArray
+	var curentPiece = document.getElementById(element).innerHTML;
+			// if curentPice ! not equal to ""
+	if(curentPiece !== ""){
+		// pop up warning that says invalid move
+		alert("Invalid move! Please choose a different square.")
+		// else 
+	} else {
+		// add current player piece to inner html
+		document.getElementById(element).innerHTML = currentPlayer;
+		// add current player piece to boardArray
+		switchPlayer();
 				// invoke search4Winner
+	}
 
 
 }
@@ -58,6 +73,8 @@ function clearBoard(){
 		document.getElementById(classIds[i].id).innerHTML = "";
 	}
 // set the BoardArray back to original state
+// set current player to winner or X
+	
 
 
 
