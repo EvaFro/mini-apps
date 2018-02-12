@@ -1,0 +1,19 @@
+#board .whiteSquare {
+	display: block;
+	padding: 0px;
+	margin: 0px;
+}
+
+.board {
+	width:160px;
+	height:160px;
+	border:none;
+}
+
+.whiteSquare {
+	width:48px;
+	height:48px;
+	float:left;
+	background-color: #FFFFFF;
+	border:2px solid #131212;
+}
