@@ -47,7 +47,14 @@ function placePeiceOnBoard(element){
 
 
 function clearBoard(){
-	
+// I: none
+// O: clears the board pieces from both the boardArray and the web board
+// Goal: restet the board
+// get the id's of all the places on the board
+// iterate through all the id's 
+	// replace each inner HTML with ""
+// set the BoardArray back to original state
+
 }
 
 
