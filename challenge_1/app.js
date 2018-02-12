@@ -23,13 +23,26 @@
 
 
 // How to track board pieces?
-	// create an board var
+	// create a boardArray var
 		// an object or array = which is easier? 
 // (X || undefined) ? O : X
 
 
-function playcePeiceOnBoard(elemt){
-	
+function placePeiceOnBoard(element){
+	// I: element Id
+	// O: adds X or O to element or a pop up saying ivaled move
+	// Goal: to add player pieces to board or tell player if it is an ivaled move
+	// Code: 
+		// first check if there is an element inerHtml value 
+			//retreave value and set to currentPieces
+			// if curentPice is not equal to ""
+			// pop up warning that says invalid move
+			// else 
+				// add current player piece to inner html
+				// add current player piece to boardArray
+				// invoke search4Winner
+
+
 }
 
 
