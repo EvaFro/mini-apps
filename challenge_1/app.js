@@ -51,9 +51,16 @@ function clearBoard(){
 // O: clears the board pieces from both the boardArray and the web board
 // Goal: restet the board
 // get the id's of all the places on the board
+	var classIds = document.getElementsByClassName('whiteSquare')
 // iterate through all the id's 
+	for(i = 0; i< classIds.length ; i++){
 	// replace each inner HTML with ""
+		document.getElementById(classIds[i].id).innerHTML = "";
+	}
 // set the BoardArray back to original state
+
+
+
 
 }
 
