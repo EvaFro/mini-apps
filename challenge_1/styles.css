@@ -17,3 +17,8 @@
 	background-color: #FFFFFF;
 	border:2px solid #131212;
 }
+
+.clearButton {
+	float: left;
+	margin: 35px;
+}
