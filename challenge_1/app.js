@@ -23,11 +23,13 @@
 // create a current player
 var playerOne = 'X';
 var playerTwo = 'O';
-var currentPlayer = playerOne;
+var currentPlayer = 'X';
 // create a winner
-var winner = playerOne;
+var winner = 'X';
 //scoreBoardObj = 
 var scoreBoardObj = {};
+scoreBoardObj[playerOne] = 0;
+scoreBoardObj[playerTwo] = 0;
 
 
 
@@ -62,10 +64,10 @@ function addPlayerName(element){
 	if(player === "playerOne"){
 		var playerName = prompt("Please enter your name:");
 		if(playerName === null || playerName === ""){
+			scoreBoardObj[playerOne] = 0;
 			document.getElementById(player).innerHTML = playerOne;
 		} else {
 			playerOne = playerName;
-			currentPlayer = playerOne;
 			scoreBoardObj[playerOne] = 0;
 			document.getElementById(player).innerHTML = playerName;
 		}
@@ -73,6 +75,7 @@ function addPlayerName(element){
 	} else {
 		var playerName = prompt("Please enter your name:");
 		if(playerName === null || playerName === ""){
+			scoreBoardObj[playerTwo] = 0;
 			document.getElementById(player).innerHTML = playerTwo;
 		} else {
 			playerTwo = playerName;
@@ -83,24 +86,28 @@ function addPlayerName(element){
 }
 
 // addScore
-function addScore(winner) {
-	scoreBoardObj[winner] += 1;
-	console.log(scoreBoardObj[winner])
+function addScore(winnerPlayer, winner) {
+	scoreBoardObj[winnerPlayer] += 1;
 	console.log(winner)
-	//document.getElementById(winner).innerHTML = scoreBoardObj[winner];
+	if(winner === "X"){
+		document.getElementById('playerOne_score').innerHTML = scoreBoardObj[winnerPlayer];
+	} else {
+		document.getElementById('playerTwo_score').innerHTML = scoreBoardObj[winnerPlayer];
+	}
+
 }
 
 
 // Note player X = 1 & player O = 0;
 function switchPlayer(){
-	(currentPlayer === playerOne) ? (currentPlayer = playerTwo) : (currentPlayer = playerOne)
+	(currentPlayer === "X") ? (currentPlayer = "O") : (currentPlayer = "X")
 }
 
 // add piece to boardArray
 function addPieceOnBoard(element) {
 	var position = JSON.parse(element);
 
-	if(currentPlayer === playerOne){
+	if(currentPlayer === 'X'){
 		boardArray[position[0]-1][position[1]-1] = 1
 	} else {
 		boardArray[position[0]-1][position[1]-1] = 0
@@ -117,25 +124,29 @@ function search4Winner(element){
 		// subtract 1 from both values in position to ensure its in correct spot in the index
 	position[0] = position[0] - 1
 	position[1] = position[1] - 1
+	winner = currentPlayer;
+	var winnerPlayer;
+	if(winner==="X"){
+		winnerPlayer = playerOne;
+	} else {
+		winnerPlayer = playerTwo;
+	}
 	// look for rows
 		// if boardArray[position[0]][0] === boardArray[position[0]][1] === boardArray[position[0]][2]
 		if((boardArray[position[0]][0] === boardArray[position[0]][1]) && (boardArray[position[0]][0] === boardArray[position[0]][2])){
-			// set winner = curentPlayer
-			winner = currentPlayer;
 			// alert: "Player __ Wins!"
-			alert(`Player ${currentPlayer} Wins!!!!`)
+			alert(`Player ${winnerPlayer} Wins!!!!`)
 			// add 1 to winner inscoreBoardObj
-			addScore(currentPlayer);
+			addScore(winnerPlayer, winner);
 
-
+		// look for col
 		} else if((boardArray[0][position[1]] === boardArray[1][position[1]]) &&  (boardArray[0][position[1]] === boardArray[2][position[1]])){
 		// for column
 		// else if boardArray[0][position[1]] === boardArray[1][position[1]] === boardArray[2][position[1]]
-			// set winner = curentPlayer
-			winner = currentPlayer;
 			// alert: "Player __ Wins!"
-			alert(`Player ${currentPlayer} Wins!!!!`)
+			alert(`Player ${winnerPlayer} Wins!!!!`)
 			// add 1 to winner inscoreBoardObj
+			addScore(winnerPlayer, winner);
 
 		// left diagnal
 		} else if(element === "[1,1]" || element === "[2,2]" || element === "[3,3]"){
@@ -143,12 +154,10 @@ function search4Winner(element){
 		// else if element === "[1,1]" || element === "[2,2]" || element === "[3,3]"
 			// if boardArray[0][0] === boardArray[1][1] === boardArray[2][2]
 			if((boardArray[0][0] === boardArray[1][1]) && (boardArray[0][0] === boardArray[2][2])){
-				// set winner = curentPlayer
-				winner = currentPlayer;
 				// alert: "Player __ Wins!"
-				alert(`Player ${currentPlayer} Wins!!!!`)
+				alert(`Player ${winnerPlayer} Wins!!!!`)
 				// add 1 to winner inscoreBoardObj
-
+				addScore(winnerPlayer, winner);
 			}
 		// right diagnal
 		} else if(element === "[1,3]" || element === "[2,2]" || element === "[3,1]"){
@@ -156,12 +165,10 @@ function search4Winner(element){
 		// else if element === "[1,1]" || element === "[2,2]" || element === "[3,3]"
 			// if boardArray[0][0] === boardArray[1][1] === boardArray[2][2]
 			if((boardArray[0][2] === boardArray[1][1]) && (boardArray[0][2] === boardArray[2][0])){
-				// set winner = curentPlayer
-				winner = currentPlayer;
 				// alert: "Player __ Wins!"
-				alert(`Player ${currentPlayer} Wins!!!!`)
+				alert(`Player ${winnerPlayer} Wins!!!!`)
 				// add 1 to winner inscoreBoardObj
-
+				addScore(winnerPlayer, winner);
 			}
 			
 		} else if(!boardArray[0].includes(null) && !boardArray[1].includes(null)  && !boardArray[2].includes(null)){
