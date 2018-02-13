@@ -81,20 +81,18 @@ function search4Winner(element){
 			alert(`Player ${currentPlayer} Wins!!!!`)
 			// // clear board
 			// clearBoard();
-		}
+		} else if((boardArray[0][position[1]] === boardArray[1][position[1]]) &&  (boardArray[0][position[1]] === boardArray[2][position[1]])){
 		// for column
 		// else if boardArray[0][position[1]] === boardArray[1][position[1]] === boardArray[2][position[1]]
-		if((boardArray[0][position[1]] === boardArray[1][position[1]]) &&  (boardArray[0][position[1]] === boardArray[2][position[1]])){
 			// set winner = curentPlayer
 			winner = currentPlayer;
 			// alert: "Player __ Wins!"
 			alert(`Player ${currentPlayer} Wins!!!!`)
 			// // clear board
 			// clearBoard();
-		}
+		} else if(element === "[1,1]" || element === "[2,2]" || element === "[3,3]"){
 		// for diagnal
 		// else if element === "[1,1]" || element === "[2,2]" || element === "[3,3]"
-		if(element === "[1,1]" || element === "[2,2]" || element === "[3,3]"){
 			// if boardArray[0][0] === boardArray[1][1] === boardArray[2][2]
 			if((boardArray[0][0] === boardArray[1][1]) && (boardArray[0][0] === boardArray[2][2])){
 				// set winner = curentPlayer
@@ -105,10 +103,9 @@ function search4Winner(element){
 				// clearBoard();
 			}
 			
-		}
+		} else if(!boardArray[0].includes(null) && !boardArray[1].includes(null)  && !boardArray[2].includes(null)){
 		// for tie
 		// else if !boradArray[0].includes(null) && !boradArray[1].includes(null)  && !boradArray[2].includes(null)
-		if(!boardArray[0].includes(null) && !boardArray[1].includes(null)  && !boardArray[2].includes(null)){
 			// alert: "Tie! Cat Scratch!"
 			alert(`Tie! Cat Scratch!`)
 			// // clear board
