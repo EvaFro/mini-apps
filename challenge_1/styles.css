@@ -24,3 +24,30 @@
 	float: left;
 	margin: 35px;
 }
+
+.scoreBoard {
+	width:160px;
+	height:90px;
+	border:none;
+	
+}
+
+.playerScoreNames {
+	border:2px solid #131212;
+	width:74px;
+	height:28px;
+	float:left;
+	background-color: #FFFFFF;
+	text-align: center;
+	font-size: 150%
+}
+
+.playerScore {
+	border:2px solid #131212;
+	width:74px;
+	height:28px;
+	float:left;
+	background-color: #FFFFFF;
+	text-align: center;
+	font-size: 150%
+}
