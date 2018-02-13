@@ -42,7 +42,7 @@ var boardArray = JSON.parse(startBoardArray);
 // * lisen4Click -  in html
 // * switchPlayers - in js
 // * addPieceOnBoard - in js
-// * placePeiceOnBoard - in js
+// * placePeiceOnBoard - in jss
 // * search4Winner -in js
 // * clearBoard - in js
 
@@ -68,19 +68,52 @@ function search4Winner(element){
 	// Goal: search row,col and diag to evalueate if just played piece won the game and display who won.
 	// Code: 
 	// crate position - JSON.parse element
+	var position = JSON.parse(element);
 		// subtract 1 from both values in position to ensure its in correct spot in the index
+	position[0] = position[0] - 1
+	position[1] = position[1] - 1
 	// look for rows
 		// if boardArray[position[0]][0] === boardArray[position[0]][1] === boardArray[position[0]][2]
+		if((boardArray[position[0]][0] === boardArray[position[0]][1]) && (boardArray[position[0]][0] === boardArray[position[0]][2])){
 			// set winner = curentPlayer
+			winner = currentPlayer;
 			// alert: "Player __ Wins!"
-
+			alert(`Player ${currentPlayer} Wins!!!!`)
+			// // clear board
+			// clearBoard();
+		}
+		// for column
 		// else if boardArray[0][position[1]] === boardArray[1][position[1]] === boardArray[2][position[1]]
+		if((boardArray[0][position[1]] === boardArray[1][position[1]]) &&  (boardArray[0][position[1]] === boardArray[2][position[1]])){
 			// set winner = curentPlayer
+			winner = currentPlayer;
 			// alert: "Player __ Wins!"
+			alert(`Player ${currentPlayer} Wins!!!!`)
+			// // clear board
+			// clearBoard();
+		}
+		// for diagnal
 		// else if element === "[1,1]" || element === "[2,2]" || element === "[3,3]"
+		if(element === "[1,1]" || element === "[2,2]" || element === "[3,3]"){
 			// if boardArray[0][0] === boardArray[1][1] === boardArray[2][2]
-			// set winner = curentPlayer
-			// alert: "Player __ Wins!"
+			if((boardArray[0][0] === boardArray[1][1]) && (boardArray[0][0] === boardArray[2][2])){
+				// set winner = curentPlayer
+				winner = currentPlayer;
+				// alert: "Player __ Wins!"
+				alert(`Player ${currentPlayer} Wins!!!!`)
+				// // clear board
+				// clearBoard();
+			}
+			
+		}
+		// for tie
+		// else if !boradArray[0].includes(null) && !boradArray[1].includes(null)  && !boradArray[2].includes(null)
+		if(!boardArray[0].includes(null) && !boardArray[1].includes(null)  && !boardArray[2].includes(null)){
+			// alert: "Tie! Cat Scratch!"
+			alert(`Tie! Cat Scratch!`)
+			// // clear board
+			// clearBoard();
+		}
 }
 
 // add to html board
@@ -103,7 +136,7 @@ function placePieceOnBoard(element){
 		// add current player piece to boardArray
 		addPieceOnBoard(element);
 		// invoke search4Winner
-		search4Winner();
+		search4Winner(element);
 		// invoke switchPlayer
 		switchPlayer();
 	}
