@@ -1,17 +1,14 @@
 var http = require("http");
 var convertCSV = require("convertCSV.js");
+var express = require('express');
+var app = express();
 
+// middle where that serves up any static files
+app.use(express.static('/client'))
 
-http.createServer((request, responce)=>{
+// if the get request is "/" serve up html page
+app.get('/', (req, res)=>{
+	res.sendFile('/client/index.html')
+})
 
-	if(request.type === "GET"){
-		response.writeHead(200, {'Content-Type': 'text/plain'});
-		console.log("Get", request.data)
-	}
-
-	if(request.type === "POST"){
-		response.writeHead(201, {'Content-Type': 'text/plain'});
-		console.log("Post", request.data)
-	}
-
-}).listen(3000,'127.0.0.1');
+http.createServer(app).listen(3000);
