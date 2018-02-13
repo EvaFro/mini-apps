@@ -5,8 +5,18 @@
 	<link rel="stylesheet" href="styles.css">
 	<script src="app.js"></script>
 </head>
-<body>
+<body bgcolor="#736182">
 	<h1>Tic Tac Toe!</h1>
+	<div class='scoreBoard'>
+		<div>
+			<div id='playerOne' class='playerScoreNames'>X</div>
+			<div id='playerTwo' class='playerScoreNames'>O</div>
+		</div>
+		<div>
+			<div id='playerOne_score' class='playerScore'>0</div>
+			<div id='playerTwo_score' class='playerScore'>0</div>
+		</div>
+	</div>
 
 	<div class='board'>
 		<div> 
@@ -28,6 +38,7 @@
 		</div>
 	</div>
 	<button onclick = "clearBoard()" class='clearButton' type="button">Clear Board</button>
+
 </body>
 </html>
 
