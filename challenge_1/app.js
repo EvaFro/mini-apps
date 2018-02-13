@@ -43,9 +43,6 @@ var boardArray = JSON.parse(startBoardArray);
 // * switchPlayers - in js
 // * addPieceOnBoard - in js
 // * placePeiceOnBoard - in js
-// * searchRow
-// * searchDiag
-// * searchCol
 // * search4Winner -in js
 // * clearBoard - in js
 
@@ -65,8 +62,25 @@ function addPieceOnBoard(element) {
 	}
 }
 
-function search4Winner(){
-	// 
+function search4Winner(element){
+	// I: none 
+	// O: pop up declare a winner/tie or nothing & set winner to currentWinner
+	// Goal: search row,col and diag to evalueate if just played piece won the game and display who won.
+	// Code: 
+	// crate position - JSON.parse element
+		// subtract 1 from both values in position to ensure its in correct spot in the index
+	// look for rows
+		// if boardArray[position[0]][0] === boardArray[position[0]][1] === boardArray[position[0]][2]
+			// set winner = curentPlayer
+			// alert: "Player __ Wins!"
+
+		// else if boardArray[0][position[1]] === boardArray[1][position[1]] === boardArray[2][position[1]]
+			// set winner = curentPlayer
+			// alert: "Player __ Wins!"
+		// else if element === "[1,1]" || element === "[2,2]" || element === "[3,3]"
+			// if boardArray[0][0] === boardArray[1][1] === boardArray[2][2]
+			// set winner = curentPlayer
+			// alert: "Player __ Wins!"
 }
 
 // add to html board
@@ -88,10 +102,10 @@ function placePieceOnBoard(element){
 		document.getElementById(element).innerHTML = currentPlayer;
 		// add current player piece to boardArray
 		addPieceOnBoard(element);
-		// invoke switchPlayer
-		switchPlayer();
 		// invoke search4Winner
 		search4Winner();
+		// invoke switchPlayer
+		switchPlayer();
 	}
 }
 
