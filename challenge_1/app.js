@@ -28,8 +28,8 @@ var currentPlayer = playerOne;
 var winner = playerOne;
 //scoreBoardObj = 
 var scoreBoardObj = {};
-scoreBoardObj[playerOne] = 0;
-scoreBoardObj[playerTwo] = 0;
+
+
 
 
 // Board
@@ -55,6 +55,41 @@ var boardArray = JSON.parse(startBoardArray);
 // * clearBoard - in js
 // * keepTrackScore - js
 // * setPlayerNames - js
+
+// addPlayerName
+function addPlayerName(element){
+	var player = element.substr(0,9);
+	if(player === "playerOne"){
+		var playerName = prompt("Please enter your name:");
+		if(playerName === null || playerName === ""){
+			document.getElementById(player).innerHTML = playerOne;
+		} else {
+			playerOne = playerName;
+			currentPlayer = playerOne;
+			scoreBoardObj[playerOne] = 0;
+			document.getElementById(player).innerHTML = playerName;
+		}
+		
+	} else {
+		var playerName = prompt("Please enter your name:");
+		if(playerName === null || playerName === ""){
+			document.getElementById(player).innerHTML = playerTwo;
+		} else {
+			playerTwo = playerName;
+			scoreBoardObj[playerTwo] = 0;
+			document.getElementById(player).innerHTML = playerName;
+		}
+	}
+}
+
+// addScore
+function addScore(winner) {
+	scoreBoardObj[winner] += 1;
+	console.log(scoreBoardObj[winner])
+	console.log(winner)
+	//document.getElementById(winner).innerHTML = scoreBoardObj[winner];
+}
+
 
 // Note player X = 1 & player O = 0;
 function switchPlayer(){
@@ -90,7 +125,7 @@ function search4Winner(element){
 			// alert: "Player __ Wins!"
 			alert(`Player ${currentPlayer} Wins!!!!`)
 			// add 1 to winner inscoreBoardObj
-
+			addScore(currentPlayer);
 
 
 		} else if((boardArray[0][position[1]] === boardArray[1][position[1]]) &&  (boardArray[0][position[1]] === boardArray[2][position[1]])){
