@@ -19,12 +19,20 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Data for board:
 ///////////////////////////////////////////////////////////////////////////////
-
+// Players
 // create a current player
-var currentPlayer = 'X';
+var playerOne = 'X';
+var playerTwo = 'O';
+var currentPlayer = playerOne;
 // create a winner
-var winner = "X";
+var winner = playerOne;
+//scoreBoardObj = 
+var scoreBoardObj = {};
+scoreBoardObj[playerOne] = 0;
+scoreBoardObj[playerTwo] = 0;
 
+
+// Board
 // How to track board pieces?
 	// create a boardArray var
 		// an object or array = which is easier? 
@@ -45,17 +53,19 @@ var boardArray = JSON.parse(startBoardArray);
 // * placePeiceOnBoard - in jss
 // * search4Winner -in js
 // * clearBoard - in js
+// * keepTrackScore - js
+// * setPlayerNames - js
 
 // Note player X = 1 & player O = 0;
 function switchPlayer(){
-	(currentPlayer === 'X') ? (currentPlayer = 'O') : (currentPlayer = 'X')
+	(currentPlayer === playerOne) ? (currentPlayer = playerTwo) : (currentPlayer = playerOne)
 }
 
 // add piece to boardArray
 function addPieceOnBoard(element) {
 	var position = JSON.parse(element);
 
-	if(currentPlayer === "X"){
+	if(currentPlayer === playerOne){
 		boardArray[position[0]-1][position[1]-1] = 1
 	} else {
 		boardArray[position[0]-1][position[1]-1] = 0
@@ -79,8 +89,10 @@ function search4Winner(element){
 			winner = currentPlayer;
 			// alert: "Player __ Wins!"
 			alert(`Player ${currentPlayer} Wins!!!!`)
-			// // clear board
-			// clearBoard();
+			// add 1 to winner inscoreBoardObj
+
+
+
 		} else if((boardArray[0][position[1]] === boardArray[1][position[1]]) &&  (boardArray[0][position[1]] === boardArray[2][position[1]])){
 		// for column
 		// else if boardArray[0][position[1]] === boardArray[1][position[1]] === boardArray[2][position[1]]
@@ -88,8 +100,9 @@ function search4Winner(element){
 			winner = currentPlayer;
 			// alert: "Player __ Wins!"
 			alert(`Player ${currentPlayer} Wins!!!!`)
-			// // clear board
-			// clearBoard();
+			// add 1 to winner inscoreBoardObj
+
+		// left diagnal
 		} else if(element === "[1,1]" || element === "[2,2]" || element === "[3,3]"){
 		// for diagnal
 		// else if element === "[1,1]" || element === "[2,2]" || element === "[3,3]"
@@ -99,8 +112,21 @@ function search4Winner(element){
 				winner = currentPlayer;
 				// alert: "Player __ Wins!"
 				alert(`Player ${currentPlayer} Wins!!!!`)
-				// // clear board
-				// clearBoard();
+				// add 1 to winner inscoreBoardObj
+
+			}
+		// right diagnal
+		} else if(element === "[1,3]" || element === "[2,2]" || element === "[3,1]"){
+		// for diagnal
+		// else if element === "[1,1]" || element === "[2,2]" || element === "[3,3]"
+			// if boardArray[0][0] === boardArray[1][1] === boardArray[2][2]
+			if((boardArray[0][2] === boardArray[1][1]) && (boardArray[0][2] === boardArray[2][0])){
+				// set winner = curentPlayer
+				winner = currentPlayer;
+				// alert: "Player __ Wins!"
+				alert(`Player ${currentPlayer} Wins!!!!`)
+				// add 1 to winner inscoreBoardObj
+
 			}
 			
 		} else if(!boardArray[0].includes(null) && !boardArray[1].includes(null)  && !boardArray[2].includes(null)){
@@ -108,8 +134,6 @@ function search4Winner(element){
 		// else if !boradArray[0].includes(null) && !boradArray[1].includes(null)  && !boradArray[2].includes(null)
 			// alert: "Tie! Cat Scratch!"
 			alert(`Tie! Cat Scratch!`)
-			// // clear board
-			// clearBoard();
 		}
 }
 
