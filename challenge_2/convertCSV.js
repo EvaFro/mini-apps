@@ -62,7 +62,8 @@ var makeCSV = function makeCSV(flatArr){
 }
 
 // Call both functions
-var flatArray = flatten(jsonObj);
-var csvSend = makeCSV(flatArray);
-
-
+// var flatArray = flatten(jsonObj);
+// var csvSend = makeCSV(flatArray);
+// Export functions for used in the server
+exports.makeCSV = makeCSV;
+exports.flatten = flatten;
