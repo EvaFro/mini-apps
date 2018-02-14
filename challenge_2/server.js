@@ -1,11 +1,13 @@
-// var convertData = require("convertData.js");
-//var bodyParser = require('body-parser');
+var conCSV = require('./convertCSV.js');
+var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
 
 // use my own middle where 
 // // may need to change this to only look for specific requests
 // app.use(convertData);
+app.use(bodyParser.json());
+// app.use(convertData.convertData());
 
 // middle where that serves up any static files
 app.use(express.static(__dirname +'/client'));
@@ -16,8 +18,15 @@ app.get('/', (req, res)=>{
 	res.sendFile(__dirname +'/client/index.html')
 });
 
-app.post('/', (req, res)=>{
-	console.log("got a post request!")
+
+app.post("/",(req, res)=>{
+	console.log("I got a post request!")
+	console.log("data: ",req.body);
+	var flatData = conCSV.flatten(req.body);
+	var csv = conCSV.makeCSV(flatData);
+	console.log("Flat CSV: ",csv)
+	res.send(JSON.stringify(csv));
+
 })
 
 
