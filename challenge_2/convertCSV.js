@@ -1,4 +1,4 @@
-
+ 
 
 
 
@@ -57,8 +57,8 @@ var makeCSV = function makeCSV(flatArr){
 	    })
 	    csv.push(tempRow);
 	})
-
-	return csv.join('\n');
+	// used <br> instead of "\n" beacuse puting into html
+	return csv.join('<br>');
 }
 
 // Call both functions
