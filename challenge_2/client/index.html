@@ -2,16 +2,19 @@
 <html>
 <head>
 	<title>Convert JSON Data to CSV</title>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	<script src="app.js"></script>
 </head>
 <body>
-	<form method="post">
+	<form method="post" id="convertForm">
 		Enter data you wish to convert to CSV format:
 		<br><br>
-		<input type="text" name="jsonData">
+		<input type="text" id='jasonData'>
 		<br><br>
 		<input type="submit" value="Submit">
 	</form>
+	<br><br>
+	<div id="csvFile"></div>
 </body>
 </html>
 
