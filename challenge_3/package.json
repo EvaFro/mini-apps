@@ -1,0 +1,23 @@
+{
+  "name": "challenge_3",
+  "version": "1.0.0",
+  "description": "Create conect 4",
+  "main": "server.js",
+  "scripts": {
+    "devserver": "./node_modules/nodemon/bin/nodemon.js server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Erin Frolli",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.14.12"
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "jquery": "^3.3.1",
+    "underscore": "^1.8.3"
+  }
+}
