@@ -21,10 +21,8 @@ app.get('/', (req, res)=>{
 
 app.post("/",(req, res)=>{
 	console.log("I got a post request!")
-	console.log("data: ",req.body);
 	var flatData = conCSV.flatten(req.body);
 	var csv = conCSV.makeCSV(flatData);
-	console.log("Flat CSV: ",csv)
 	res.send(JSON.stringify(csv));
 
 })
