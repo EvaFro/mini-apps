@@ -23,16 +23,7 @@ $(document).ready(function(){
 		  },
 		  error: function(result) {console.log("result err: ", result)}
 		});
-
-
-	    //var posting = $.post('/', {data: JSON.stringify(jasonData)})
-
-	    // posting.done(function( data ) {
-	    // 	console.log("result data: ", data)
-	    // });
 	});
-
-
 });
 
 
