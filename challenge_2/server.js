@@ -1,4 +1,3 @@
-var http = require("http");
 // var convertData = require("convertData.js");
 //var bodyParser = require('body-parser');
 var express = require('express');
@@ -13,13 +12,14 @@ app.use(express.static(__dirname +'/client'));
 
 // if the get request is "/" serve up html page
 app.get('/', (req, res)=>{
+	console.log("Served up home page!")
 	res.sendFile(__dirname +'/client/index.html')
 });
 
-// app.post((req, res)=>{
-
-// })
+app.post('/', (req, res)=>{
+	console.log("got a post request!")
+})
 
 
 // listen for requests on the server
-http.createServer(app).listen(3000);
+app.listen(3000);
