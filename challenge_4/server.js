@@ -10,6 +10,6 @@ app.get('/', (req, res)=>{
 	res.sendFile(__dirname + '/client/index.html')
 })
 
-app.listen(3000);
+app.listen(8080);
 
 
