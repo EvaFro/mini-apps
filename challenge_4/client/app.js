@@ -13,6 +13,27 @@ class Game extends React.Component {
 		}
 	}
 
+	randomPinKnockDownOrder(){
+
+	}
+
+	knockDownPins(){
+
+	}
+
+	countDownedPins(){
+
+	}
+
+	trackScore() {
+		
+	}
+
+
+
+
+
+
 	render() {
 		return(
 			<div className="game" >
